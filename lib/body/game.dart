@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ktck_nguyen_hoang_phi_hung/layout/layout.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:ktck_nguyen_hoang_phi_hung/main.dart';
@@ -110,9 +111,35 @@ class _homeGame extends State<Game> {
                 new Text('Điểm của bạn là: ' + snakePostion.length.toString()),
             actions: <Widget>[
               new TextButton(
+                child: Text('Transcript'),
+                onPressed: () {
+                  _bangDiem();
+                },
+              ),
+              new TextButton(
                 child: Text('Play Again'),
                 onPressed: () {
                   startGame();
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  void _bangDiem() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text('Bảng điểm'),
+            content: new Text('1. Phi Hùng: ' + snakePostion.length.toString()),
+            actions: <Widget>[
+              new TextButton(
+                child: Text('Back'),
+                onPressed: () {
+                  Layout();
                   Navigator.of(context).pop();
                 },
               )

@@ -3,8 +3,6 @@ import 'package:ktck_nguyen_hoang_phi_hung/layout/layout.dart';
 import 'package:ktck_nguyen_hoang_phi_hung/login/login.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
