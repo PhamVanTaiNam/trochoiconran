@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ktck_nguyen_hoang_phi_hung/body/game.dart';
+import 'package:ktck_nguyen_hoang_phi_hung/data.dart';
+import 'package:ktck_nguyen_hoang_phi_hung/login/login.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 
 class Layout extends StatefulWidget {
-  const Layout({super.key});
+  Layout({
+    super.key,
+  });
 
   @override
   State<Layout> createState() => _homeLayout();
@@ -11,6 +17,10 @@ class Layout extends StatefulWidget {
 class _homeLayout extends State<Layout> {
   @override
   Widget build(BuildContext context) {
+    PlayerInfo playerInfo = Provider.of<PlayerInfo>(context);
+    // final userName = PlayData(playerName: '');
+
+    var userName;
     return Scaffold(
       appBar: null,
       body: Container(
@@ -38,6 +48,16 @@ class _homeLayout extends State<Layout> {
               icon: const Icon(Icons.play_circle),
               iconSize: 100,
             ),
+            Expanded(
+                child: ListView.builder(
+              itemCount: playerInfo.playlist.length,
+              itemBuilder: (context, index) {
+                PlayData playData = playerInfo.playlist[index];
+                return Text(
+                  playData.playerName,
+                );
+              },
+            )),
           ],
         ),
       ),

@@ -110,7 +110,7 @@ class _homeGame extends State<Game> {
             content:
                 new Text('Điểm của bạn là: ' + snakePostion.length.toString()),
             actions: <Widget>[
-              new TextButton(
+              new ElevatedButton(
                 child: Text('Transcript'),
                 onPressed: () {
                   _bangDiem();

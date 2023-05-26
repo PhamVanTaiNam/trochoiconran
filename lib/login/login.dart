@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:ktck_nguyen_hoang_phi_hung/layout/layout.dart';
 import 'package:ktck_nguyen_hoang_phi_hung/login/login.dart';
+import 'package:provider/provider.dart';
+import '../data.dart';
 
 class Login extends StatelessWidget {
+  // final List<String> username = [];
+  final TextEditingController _username = TextEditingController();
+
+  final userName = PlayData(playerName: '');
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromARGB(255, 0, 185, 31),
         title: const Text('Đăng nhập'),
       ),
       body: Container(
@@ -14,7 +22,8 @@ class Login extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const TextField(
+            TextField(
+              controller: _username,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -36,6 +45,12 @@ class Login extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                String playerName = _username.text;
+                List<PlayData> playlist =
+                    Provider.of<PlayerInfo>(context, listen: false).playlist;
+                PlayData playData = PlayData(playerName: playerName);
+
+                playlist.add(playData);
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Layout()));
               },
