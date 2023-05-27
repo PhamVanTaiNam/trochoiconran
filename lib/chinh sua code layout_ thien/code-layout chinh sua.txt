@@ -1,0 +1,9 @@
+
+        padding: const EdgeInsets.all(50),
+        alignment: Alignment.center,
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/ran1.jpg'),
+            fit: BoxFit.cover,
