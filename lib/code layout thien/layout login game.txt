@@ -1,0 +1,13 @@
+ const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                String playerName = _username.text;
+                List<PlayData> playlist =
+                    Provider.of<PlayerInfo>(context, listen: false).playlist;
+                PlayData playData = PlayData(playerName: playerName);
+
+                playlist.add(playData);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Layout()));
+              },
+              child: const Text('Login'),
