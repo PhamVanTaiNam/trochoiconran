@@ -1,0 +1,11 @@
+ const SizedBox(height: 20),
+            TextField(
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: 'Password',
+                  hintText: 'Enter password',
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.visibility),
+                  )),
