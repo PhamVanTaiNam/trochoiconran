@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+
+import 'package:ktck_nguyen_hoang_phi_hung/data.dart';
 import 'package:ktck_nguyen_hoang_phi_hung/layout/layout.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:ktck_nguyen_hoang_phi_hung/main.dart';
+import 'package:provider/provider.dart';
+import 'package:ktck_nguyen_hoang_phi_hung/login/login.dart';
 
 void main() => runApp(MyApp());
 
 class Game extends StatefulWidget {
-  const Game({super.key});
+  Game({super.key});
 
   @override
   State<Game> createState() => _homeGame();
@@ -134,7 +138,7 @@ class _homeGame extends State<Game> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: new Text('Bảng điểm'),
-            content: new Text('1. Phi Hùng: ' + snakePostion.length.toString()),
+            content: new Text('Phi Hùng:    ' + snakePostion.length.toString()),
             actions: <Widget>[
               new TextButton(
                 child: Text('Back'),
@@ -150,6 +154,7 @@ class _homeGame extends State<Game> {
 
   @override
   Widget build(BuildContext context) {
+    PlayerInfo playerInfo = Provider.of<PlayerInfo>(context);
     return Scaffold(
       //appBar : AppBar(),
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
@@ -228,6 +233,21 @@ class _homeGame extends State<Game> {
                               fontSize: 20,
                               backgroundColor: Colors.white),
                         )),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: playerInfo.playlist.length,
+                        itemBuilder: (context, index) {
+                          PlayData playData = playerInfo.playlist[index];
+                          return Text(
+                            'Xin chào' + playData.playerName,
+                            style: TextStyle(
+                                backgroundColor: Colors.black,
+                                color: Colors.white,
+                                fontSize: 20),
+                          );
+                        },
+                      ),
+                    ),
                     Text(
                       'Điểm: ' + snakePostion.length.toString(),
                       style: TextStyle(
