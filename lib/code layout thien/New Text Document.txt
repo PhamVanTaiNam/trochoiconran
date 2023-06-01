@@ -12,4 +12,4 @@ class _homeLayout extends State<Layout> {
           image: DecorationImage(
             image: AssetImage('assets/images/ran1.jpg'),
             fit: BoxFit.cover,
-          ),
+          );
