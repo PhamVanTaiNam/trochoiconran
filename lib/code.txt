@@ -1,0 +1,34 @@
+void startGame() {
+    snakePostion = [45, 65, 85, 105, 125];
+    const duration = const Duration(milliseconds: 300);
+    Timer.periodic(duration, (Timer timer) {
+      updateSnake();
+
+      if (gameOver()) {
+        timer.cancel();
+        _showGameOverScreen();
+      }
+    });
+  }
+// game bắt đàu thì tạo ra rắn , tốc độ,
+// nếu game két thúc  thì rắn ngưng chạy và show ra màn hình kết quả điểm
+
+  var phuongHuong = 'down';
+  void updateSnake() {
+    setState(() {
+      switch (phuongHuong) {
+        case 'down':
+          if (snakePostion.last > 640) {
+            snakePostion.add(snakePostion.last + 20 - 660);
+          } else {
+            snakePostion.add(snakePostion.last + 20);
+          }
+          break;
+
+        case 'up':
+          if (snakePostion.last < 20) {
+            snakePostion.add(snakePostion.last - 20 + 660);
+          } else {
+            snakePostion.add(snakePostion.last - 20);
+          }
+          break;
