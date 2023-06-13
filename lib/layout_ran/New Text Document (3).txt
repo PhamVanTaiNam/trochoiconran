@@ -1,0 +1,46 @@
+void _showGameOverScreen() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text('Game Over'),
+            content:
+                new Text('Điểm của bạn là: ' + snakePostion.length.toString()),
+            actions: <Widget>[
+              new ElevatedButton(
+                child: Text('Transcript'),
+                onPressed: () {
+                  _bangDiem();
+                },
+              ),
+              new TextButton(
+                child: Text('Play Again'),
+                onPressed: () {
+                  startGame();
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  void _bangDiem() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text('Bảng điểm'),
+            content: new Text('Phi Hùng:    ' + snakePostion.length.toString()),
+            actions: <Widget>[
+              new TextButton(
+                child: Text('Back'),
+                onPressed: () {
+                  Layout();
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
